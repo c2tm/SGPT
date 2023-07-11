@@ -1,0 +1,21 @@
+form {
+    display: flex;
+    width: 40rem;
+}
+
+form > input {
+    width: 100%;
+    font-size: 22px;
+    outline: none;
+}
+
+form > input:focus {
+    border: 2px solid green;
+}
+
+.homepage-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    padding: 6rem 0 0 0;
+}

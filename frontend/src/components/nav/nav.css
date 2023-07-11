@@ -1,0 +1,23 @@
+nav {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    height: 6rem;
+    border-bottom: 2px solid green;
+    padding: 0 0 0 0;
+}
+
+nav > ul {
+    display: flex;
+    margin: 0 0 0 4rem;
+    padding: 0 0 0 0;
+}
+
+nav > ul > li {
+    margin: 0 4rem 0 0;
+    list-style: none;
+}
+
+nav > ul > li > a {
+    font-size: 28px;
+}
