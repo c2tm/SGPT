@@ -6,12 +6,13 @@ import './App.css'
 function App() {
 
   const [routerState, setRouterState] = useState('home');
+  const [playlistState, setPlaylistState] = useState({});
 
   return (
     <>
       <div id="app-container"> 
         <Nav routerState={routerState} setRouterState={setRouterState} />
-        <Body routerState={routerState} setRouterState={setRouterState} />
+        <Body routerState={routerState} setRouterState={setRouterState} playlistState={playlistState} setPlaylistState={setPlaylistState} />
       </div>
       
     </>

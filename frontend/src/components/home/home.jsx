@@ -1,6 +1,6 @@
 import "./home.css";
 
-function Home({setRouterState}) {
+function Home({setRouterState, setPlaylistState}) {
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -24,7 +24,9 @@ function Home({setRouterState}) {
                 throw new Error('Response was not ok!')
             } else {
                 const data = await response.json();
-                console.log(JSON.parse(data));
+                const dataDecoded = JSON.parse(data);
+                setPlaylistState(dataDecoded);
+                setRouterState('playlist');
             }
         }
         fetchPlaylist();
