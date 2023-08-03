@@ -3,7 +3,6 @@ nav {
     align-items: center;
     width: 100vw;
     height: 6rem;
-    border-bottom: 2px solid green;
     padding: 0 0 0 0;
 }
 
@@ -20,4 +19,6 @@ nav > ul > li {
 
 nav > ul > li > a {
     font-size: 28px;
+    color: white;
+    text-decoration: none;
 }

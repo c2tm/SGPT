@@ -35,7 +35,7 @@ function Home({setRouterState, setPlaylistState}) {
     const formHTML = (
         <form onSubmit={handleSubmit}>
             <input type="text" id="prompt" name="prompt" placeholder="What type of playlist are you looking for?" autoComplete="off"/>
-            <button type="submit">Submit</button>
+            {/* <button type="submit">Submit</button> */}
         </form>
     )
 

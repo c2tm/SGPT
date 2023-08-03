@@ -10,10 +10,7 @@ function Nav({routerState, setRouterState}) {
     return (
         <nav>
             <ul>
-                <li><a href="#" onClick={() => handleLink("home")}>Home</a></li>
-                <li><a>Test</a></li>
-                <li><a>Test</a></li>
-                <li><a>Test</a></li>
+                <li><a href="#" onClick={() => handleLink("home")}>SGPT</a></li>
             </ul>
         </nav>
     )

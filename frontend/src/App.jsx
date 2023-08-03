@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <div id="app-container"> 
+      <div id="app-container">
         <Nav routerState={routerState} setRouterState={setRouterState} />
         <Body routerState={routerState} setRouterState={setRouterState} playlistState={playlistState} setPlaylistState={setPlaylistState} />
       </div>
