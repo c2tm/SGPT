@@ -1,4 +1,5 @@
 import "./home.css";
+import LoadingDots from '../graphics/loadingdots.jsx';
 
 function Home({setRouterState, setPlaylistState}) {
 
@@ -6,7 +7,8 @@ function Home({setRouterState, setPlaylistState}) {
         event.preventDefault();
         event.persist();
         const input = document.getElementById("prompt").value;
-
+        showLoadingDots();
+        
         const fetchPlaylist = async () => {
             const options = {
                 method: 'POST',
@@ -32,10 +34,16 @@ function Home({setRouterState, setPlaylistState}) {
         fetchPlaylist();
     }
 
+    function showLoadingDots() {
+        const loadingDots = document.getElementById("loadingdots-container");
+        loadingDots.style.visibility = "visible";
+    }
+
     const formHTML = (
         <form onSubmit={handleSubmit}>
             <input type="text" id="prompt" name="prompt" placeholder="What type of playlist are you looking for?" autoComplete="off"/>
             {/* <button type="submit">Submit</button> */}
+            <LoadingDots />
         </form>
     )
 

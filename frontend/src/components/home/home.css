@@ -1,12 +1,12 @@
 form {
     display: flex;
     width: 40rem;
-    height: 15rem;
+    height: 10rem;
     padding: 0 3rem 0 3rem;
     background-color: #2E2C2C;
     align-items: center;
     border-radius: 30px;
-    margin: 10rem 0 0 0;
+    margin: 13rem 0 0 0;
     filter: drop-shadow(0 0 0.3rem black);
 }
 
@@ -20,6 +20,7 @@ form > input {
     background: rgb(37, 36, 36);
     transition: background-color 0.5s ease;
     color: white;
+    margin: 2rem 0 0 0;
 }
 
 form > input::placeholder {
@@ -41,6 +42,12 @@ form > button {
     display: flex;
     width: 100vw;
     height: 100%;
+    justify-content: center;
+}
+
+.homepage-container > form {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 

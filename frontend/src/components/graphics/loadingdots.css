@@ -1,0 +1,42 @@
+#loadingdots-container {
+    width: 100%;
+    visibility: hidden;
+}
+
+#loadingdots-container > div {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    background-color: white;
+    display: inline-block;
+    margin: .5rem;
+    animation: scaling .8s ease-in-out infinite;
+}
+
+#loadingdots-container > div:nth-child(0) {
+    animation-delay: 0s;
+}
+#loadingdots-container > div:nth-child(1) {
+    animation-delay: .2s;
+}
+#loadingdots-container > div:nth-child(2) {
+    animation-delay: .4s;
+}
+#loadingdots-container > div:nth-child(3) {
+    animation-delay: .6s;
+}
+#loadingdots-container > div:nth-child(4) {
+    animation-delay: .8s;
+}
+#loadingdots-container > div:nth-child(5) {
+    animation-delay: .10s;
+}
+
+@keyframes scaling {
+    0%, 100% {
+        transform: scale(0.2);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
