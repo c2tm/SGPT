@@ -1,6 +1,7 @@
 import SgptDAO from "../dao/sgptDAO.js";
 import crypto from 'crypto';
 import querystring from 'querystring'
+import axios from "axios";
 
 export default class SgptController {
     static async apiPostPlaylist(req, res, next) {
@@ -23,7 +24,7 @@ export default class SgptController {
     static async apiSpotifyLogin(req, res) {
         try {
             var state = crypto.randomBytes(16).toString('hex');
-            var scope = 'playlist-modify-public';
+            var scope = 'playlist-modify-public user-read-private user-read-email playlist-modify-private';
             var url = 'https://accounts.spotify.com/authorize?' +
             querystring.stringify({
                 response_type: 'code',
@@ -33,8 +34,48 @@ export default class SgptController {
                 state: state
             });
 
-            console.log(url);
+            // console.log(url);
             res.json({ url: url });
+        } catch (e) {
+            res.status(500).json({ error: e.message });
+        }
+    }
+
+    static async apiSpotifyToken(req, res, next) {
+        try {
+            // client_id: process.env.CLIENT_ID,
+            var authOptions = {
+                code: req.body.code,
+                redirect_uri: 'http://127.0.0.1:3000',
+                grant_type: 'authorization_code' 
+            };
+
+            console.log(req.body.code);
+
+            const headers = {
+                'Content-Type':'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + (new Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64'))
+              };
+
+            axios({
+                method: 'post',
+                url: 'https://accounts.spotify.com/api/token',
+                data: authOptions,
+                headers: headers
+            }).then((response) => {
+                console.log(response);
+                res.send(response.data);
+
+                // if (dataDecoded.statusCode === 200) {
+                //     var access_token = body.access_token;
+                //     res.json({
+                //       'access_token': access_token
+                //     });
+                // }
+            }, (error) => {
+                console.log(error);
+            });
+
         } catch (e) {
             res.status(500).json({ error: e.message });
         }

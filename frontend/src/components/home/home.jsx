@@ -1,5 +1,6 @@
 import "./home.css";
 import LoadingDots from '../graphics/loadingdots.jsx';
+import { useEffect } from "react";
 
 function Home({setRouterState, setPlaylistState}) {
 
