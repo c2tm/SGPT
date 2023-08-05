@@ -43,7 +43,6 @@ export default class SgptController {
 
     static async apiSpotifyToken(req, res, next) {
         try {
-            // client_id: process.env.CLIENT_ID,
             var authOptions = {
                 code: req.body.code,
                 redirect_uri: 'http://127.0.0.1:3000',
@@ -65,13 +64,6 @@ export default class SgptController {
             }).then((response) => {
                 console.log(response);
                 res.send(response.data);
-
-                // if (dataDecoded.statusCode === 200) {
-                //     var access_token = body.access_token;
-                //     res.json({
-                //       'access_token': access_token
-                //     });
-                // }
             }, (error) => {
                 console.log(error);
             });

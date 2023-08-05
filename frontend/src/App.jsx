@@ -9,12 +9,15 @@ function App() {
   const [playlistState, setPlaylistState] = useState({});
   const [accessTokenState, setAccessTokenState] = useState('');
   const [userIdState, setUserIdState] = useState('');
+  const [titleState, setTitleState] = useState('');
 
   useEffect(() => {
     if(localStorage.getItem("playlistState")) {
      const playlist = localStorage.getItem("playlistState");
+     const title = localStorage.getItem("titleState");
     //  localStorage.removeItem('playlistState');
      setPlaylistState(JSON.parse(playlist));
+     setTitleState(JSON.parse(title));
      setRouterState("playlist");
     }
  },[]);
@@ -23,7 +26,12 @@ function App() {
     <>
       <div id="app-container">
         <Nav routerState={routerState} setRouterState={setRouterState} />
-        <Body routerState={routerState} setRouterState={setRouterState} playlistState={playlistState} setPlaylistState={setPlaylistState} accessTokenState={accessTokenState} setAccessTokenState={setAccessTokenState} userIdState={userIdState} setUserIdState={setUserIdState} />
+        <Body routerState={routerState} 
+        setRouterState={setRouterState} 
+        playlistState={playlistState} setPlaylistState={setPlaylistState} 
+        accessTokenState={accessTokenState} setAccessTokenState={setAccessTokenState} 
+        userIdState={userIdState} setUserIdState={setUserIdState}
+        titleState={titleState} setTitleState={setTitleState} />
       </div>
       
     </>

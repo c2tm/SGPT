@@ -37,7 +37,7 @@ export default class SgptDAO {
                 user: username,
                 playlist: JSON.parse(chatCompletion.data.choices[0].message.content),
             }
-            const playlistInsert = await sgpt.insertOne(playlistDoc);
+            // const playlistInsert = await sgpt.insertOne(playlistDoc);
 
             return chatCompletion.data.choices[0].message.content;
             

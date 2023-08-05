@@ -2,7 +2,7 @@ import "./home.css";
 import LoadingDots from '../graphics/loadingdots.jsx';
 import { useEffect } from "react";
 
-function Home({setRouterState, setPlaylistState}) {
+function Home({setRouterState, setPlaylistState, setTitleState}) {
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -28,6 +28,7 @@ function Home({setRouterState, setPlaylistState}) {
             } else {
                 const data = await response.json();
                 const dataDecoded = JSON.parse(data);
+                setTitleState(input);
                 setPlaylistState(dataDecoded);
                 setRouterState('playlist');
             }

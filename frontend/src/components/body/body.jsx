@@ -1,9 +1,9 @@
 import './body.css'
 import { router } from '../../Utils/router';
 
-function Body({routerState, setRouterState, setPlaylistState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState}) {
+function Body({routerState, setRouterState, setPlaylistState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState, setTitleState}) {
 
-    let content = router(routerState, setRouterState, setPlaylistState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState);
+    let content = router(routerState, setRouterState, setPlaylistState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState, setTitleState);
 
     return (
         <div className='body-container'>
