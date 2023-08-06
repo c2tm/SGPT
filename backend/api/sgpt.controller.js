@@ -29,7 +29,7 @@ export default class SgptController {
                 response_type: 'code',
                 client_id: process.env.CLIENT_ID,
                 scope: scope,
-                redirect_uri: 'http://127.0.0.1:3000',
+                redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
                 state: state
             });
             res.json({ url: url });
@@ -42,7 +42,7 @@ export default class SgptController {
         try {
             var authOptions = {
                 code: req.body.code,
-                redirect_uri: 'http://127.0.0.1:3000',
+                redirect_uri: process.env.SPOTIFY_REDIRECT_URI,
                 grant_type: 'authorization_code' 
             };
             const headers = {
