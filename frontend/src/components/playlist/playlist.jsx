@@ -5,7 +5,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
 
     const playlistArray = playlistState.playlist;
     const button = handleSpotifyButtons();
-    console.log(playlistArray);
 
     async function handleSpotifyLogin(event) {
         event.preventDefault();
@@ -47,7 +46,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                 throw new Error('Response was not ok!')
             } else {
                 const data = await response.json();
-                console.log(data);
                 return data.access_token;
             }
         }
@@ -71,7 +69,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                 throw new Error('Response was not ok!')
             } else {
                 const data = await response.json();
-                console.log(data);
                 return data.id;
             }
         }
@@ -99,7 +96,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                 throw new Error('Response was not ok!')
             } else {
                 const data = await response.json();
-                console.log(data);
                 playlistId = data.id;
             }
             
@@ -108,9 +104,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
             for(let i = 0; i < playlistArray.length; i++) {
                 const artist = playlistArray[i].artist;
                 const name = playlistArray[i].name;
-
-                console.log('name', name)
-                console.log('artist', artist)
                 const searchPromise = (async () => {
                     const options = {
                         headers: {
@@ -124,7 +117,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                     } else {
                         const data = await response.json();
                         const searchResults = data.tracks.items;
-                        console.log(searchResults);
                         const acceptedResult = searchResults.find((result) => {
                             let bool = false;
                             let artistArray = result.artists;
@@ -152,7 +144,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
             Promise.all(searchPromises)
             .then(() => {
                 const tryAddSongs = async () => {
-                    console.log(songUriArray);
                     const options = {
                         method: 'POST',
                         headers: {
@@ -179,7 +170,6 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
         tryCreatePlaylist();
 
         setOpenModal(true);
-
     }
 
     async function handleSpotifyIntegration(e, step, code) {

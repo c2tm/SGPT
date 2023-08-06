@@ -26,23 +26,17 @@ export default class SgptDAO {
             const openai = new OpenAIApi(configuration);
             const prompt = process.env.GPT_PROMPT;
             const message= prompt + " " + input;
-
             const chatCompletion = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo-16k-0613",
                 messages: [{"role": "user", "content": message}],
               });
-
-              console.log(JSON.parse(chatCompletion.data.choices[0].message.content));
-
             const playlistDoc = {
                 id: id,
                 user: username,
                 playlist: JSON.parse(chatCompletion.data.choices[0].message.content),
             }
             // const playlistInsert = await sgpt.insertOne(playlistDoc);
-
             return chatCompletion.data.choices[0].message.content;
-            
         } catch (e) {
             if (e instanceof SyntaxError) {
                 console.error("This is a syntax error:", e.message);

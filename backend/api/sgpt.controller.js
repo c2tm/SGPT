@@ -9,7 +9,6 @@ export default class SgptController {
             const user = req.body.user;
             const input = req.body.input;
             const id = req.body.id;
-
             const playlistResponse = await SgptDAO.addPlaylist(
                 user,
                 input,
@@ -33,8 +32,6 @@ export default class SgptController {
                 redirect_uri: 'http://127.0.0.1:3000',
                 state: state
             });
-
-            // console.log(url);
             res.json({ url: url });
         } catch (e) {
             res.status(500).json({ error: e.message });
@@ -48,26 +45,20 @@ export default class SgptController {
                 redirect_uri: 'http://127.0.0.1:3000',
                 grant_type: 'authorization_code' 
             };
-
-            console.log(req.body.code);
-
             const headers = {
                 'Content-Type':'application/x-www-form-urlencoded',
                 'Authorization': 'Basic ' + (new Buffer.from(process.env.CLIENT_ID + ':' + process.env.CLIENT_SECRET).toString('base64'))
               };
-
             axios({
                 method: 'post',
                 url: 'https://accounts.spotify.com/api/token',
                 data: authOptions,
                 headers: headers
             }).then((response) => {
-                console.log(response);
                 res.send(response.data);
             }, (error) => {
                 console.log(error);
             });
-
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
