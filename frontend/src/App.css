@@ -15,3 +15,34 @@ body {
   /* clip-path: circle(70% at 72% 6%); */
   /* clip-path: circle(70% at 80% 6%); */
 }
+
+.custom-shape-divider-bottom-1691028032 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1691028032 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 163px;
+}
+
+.custom-shape-divider-bottom-1691028032 .shape-fill {
+  fill: #2E2C2C;
+}
+
+.body-container {
+  height: 100%;
+}
+
+@media (max-width: 1280px) {
+  .custom-shape-divider-bottom-1691028032 svg {
+      height: 200px;
+  }
+}
