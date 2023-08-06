@@ -120,9 +120,9 @@
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
   .playlist-container {
-    height: 42rem;
+    height: 33rem;
   }
 
   .playlist {

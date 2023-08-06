@@ -40,3 +40,10 @@
         transform: scale(1);
     }
 }
+
+@media (max-width: 390px) {
+    #loadingdots-container > div {
+        height: 5px;
+        width: 5px;
+    }
+}

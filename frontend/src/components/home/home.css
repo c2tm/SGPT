@@ -94,11 +94,11 @@ form > button {
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 390px) {
     form {
         width: 20rem;
         height: 5rem;
-        margin: 18rem 0 0 0;
+        margin: 14rem 0 0 0;
         padding: 0 2rem 0 2rem;
     }
 
