@@ -3,6 +3,8 @@ import Body from './components/body/body'
 import Nav from './components/nav/nav'
 import './App.css'
 
+export const URL = process.env.REACT_APP_SERVER_URL;
+
 function App() {
 
   const [routerState, setRouterState] = useState('home');

@@ -1,5 +1,6 @@
 import "./playlist.css";
 import CustomModal from "../modals/endModal.jsx";
+import { URL } from "../../App";
 
 function Playlist({setRouterState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState, openModal, setOpenModal, setPlaylistState, setTitleState}) {
 
@@ -14,7 +15,7 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
         localStorage.setItem("titleState", JSON.stringify(titleState));
         
         const tryLogin = async () => {
-            const response = await fetch("http://127.0.0.1:8000/api/v1/sgpt/login").catch((err) => console.warn(err));
+            const response = await fetch(`${URL}/api/v1/sgpt/login`).catch((err) => console.warn(err));
             if(!response) {
                 throw new Error('Response was not ok!')
             } else {
@@ -41,7 +42,7 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                     code: code,
                 })
             }
-            const response = await fetch("http://127.0.0.1:8000/api/v1/sgpt/token", options).catch((err) => console.warn(err));
+            const response = await fetch(`${URL}/api/v1/sgpt/token`, options).catch((err) => console.warn(err));
             if(!response) {
                 throw new Error('Response was not ok!')
             } else {
@@ -64,7 +65,7 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                     Authorization: `Bearer ${token}`,
                 },
             }
-            const response = await fetch("https://api.spotify.com/v1/me", options).catch((err) => console.warn(err));
+            const response = await fetch(`https://api.spotify.com/v1/me`, options).catch((err) => console.warn(err));
             if(!response) {
                 throw new Error('Response was not ok!')
             } else {

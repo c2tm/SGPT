@@ -2,6 +2,7 @@ import "./home.css";
 import LoadingDots from '../graphics/loadingdots.jsx';
 import { useEffect } from "react";
 import { isJsonString } from "../../Utils/functions";
+import { URL } from "../../App";
 import HomeModal from "../modals/homeModal";
 
 function Home({setRouterState, setPlaylistState, setTitleState, openModal, setOpenModal}) {
@@ -24,7 +25,7 @@ function Home({setRouterState, setPlaylistState, setTitleState, openModal, setOp
                     input: input,
                 })
             }
-            const response = await fetch("http://127.0.0.1:8000/api/v1/sgpt/playlist", options).catch((err) => console.warn(err));
+            const response = await fetch(`${URL}/api/v1/sgpt/playlist`, options).catch((err) => console.warn(err));
             if(!response) {
                 throw new Error('Response was not ok!')
             } else {
