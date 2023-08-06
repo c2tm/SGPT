@@ -3,7 +3,7 @@ import Body from './components/body/body'
 import Nav from './components/nav/nav'
 import './App.css'
 
-export const URL = process.env.REACT_APP_SERVER_URL;
+export const serverURL = import.meta.env.VITE_SERVER_URL;
 
 function App() {
 
