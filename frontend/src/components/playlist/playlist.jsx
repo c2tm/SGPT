@@ -1,6 +1,7 @@
 import "./playlist.css";
+import CustomModal from "../modal/modal.jsx";
 
-function Playlist({setRouterState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState}) {
+function Playlist({setRouterState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState, openModal, setOpenModal, setPlaylistState, setTitleState}) {
 
     const playlistArray = playlistState.playlist;
     const button = handleSpotifyButtons();
@@ -107,6 +108,9 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
             for(let i = 0; i < playlistArray.length; i++) {
                 const artist = playlistArray[i].artist;
                 const name = playlistArray[i].name;
+
+                console.log('name', name)
+                console.log('artist', artist)
                 const searchPromise = (async () => {
                     const options = {
                         headers: {
@@ -120,6 +124,7 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
                     } else {
                         const data = await response.json();
                         const searchResults = data.tracks.items;
+                        console.log(searchResults);
                         const acceptedResult = searchResults.find((result) => {
                             let bool = false;
                             let artistArray = result.artists;
@@ -147,6 +152,7 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
             Promise.all(searchPromises)
             .then(() => {
                 const tryAddSongs = async () => {
+                    console.log(songUriArray);
                     const options = {
                         method: 'POST',
                         headers: {
@@ -171,6 +177,9 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
             });
         }
         tryCreatePlaylist();
+
+        setOpenModal(true);
+
     }
 
     async function handleSpotifyIntegration(e, step, code) {
@@ -197,27 +206,30 @@ function Playlist({setRouterState, playlistState, accessTokenState, setAccessTok
         let step = 1;
         let code = 0;
         if(myUrl.get('code')) {
-           content = "CreatePlaylist"
+           content = "Create Playlist"
            step = 2;
            code = myUrl.get('code');
         }
 
         return (
-            <button onClick={async (e) => handleSpotifyIntegration(e, step, code)}>{content}</button>
+            <button class="spotify-button" onClick={async (e) => handleSpotifyIntegration(e, step, code)}>{content}</button>
         );
     }
 
     return (
-        <div className="playlist-container" id="playlist-container">
-            <div className="playlist">
-                {playlistArray.map(song => (
-                    <div className="song">
-                        <div>{song.name}</div>
-                        <div>{song.artist}</div>
-                    </div>
-                ))}
+        <div>
+            <div className="playlist-container" id="playlist-container">
+                <div className="playlist">
+                    {playlistArray.map(song => (
+                        <div className="song">
+                            <div>{song.name}</div>
+                            <div>{song.artist}</div>
+                        </div>
+                    ))}
+                </div>
+                {button}
             </div>
-            {button}
+        {openModal && <CustomModal openModal={openModal} setOpenModal={setOpenModal} setRouterState={setRouterState} setAccessTokenState={setAccessTokenState} setUserIdState={setUserIdState} setPlaylistState={setPlaylistState} setTitleState={setTitleState} />}
         </div>
     )
 }

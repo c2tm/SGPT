@@ -10,6 +10,7 @@ function App() {
   const [accessTokenState, setAccessTokenState] = useState('');
   const [userIdState, setUserIdState] = useState('');
   const [titleState, setTitleState] = useState('');
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     if(localStorage.getItem("playlistState")) {
@@ -25,13 +26,18 @@ function App() {
   return (
     <>
       <div id="app-container">
-        <Nav routerState={routerState} setRouterState={setRouterState} />
-        <Body routerState={routerState} 
-        setRouterState={setRouterState} 
+        <Nav routerState={routerState} setRouterState={setRouterState} 
         playlistState={playlistState} setPlaylistState={setPlaylistState} 
         accessTokenState={accessTokenState} setAccessTokenState={setAccessTokenState} 
         userIdState={userIdState} setUserIdState={setUserIdState}
-        titleState={titleState} setTitleState={setTitleState} />
+        titleState={titleState} setTitleState={setTitleState}
+        openModal={openModal} setOpenModal={setOpenModal} />
+        <Body routerState={routerState} setRouterState={setRouterState} 
+        playlistState={playlistState} setPlaylistState={setPlaylistState} 
+        accessTokenState={accessTokenState} setAccessTokenState={setAccessTokenState} 
+        userIdState={userIdState} setUserIdState={setUserIdState}
+        titleState={titleState} setTitleState={setTitleState}
+        openModal={openModal} setOpenModal={setOpenModal} />
       </div>
       
     </>
