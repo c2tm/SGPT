@@ -1,6 +1,5 @@
 nav {
     display: flex;
-    align-items: center;
     width: 100vw;
     height: 6rem;
     padding: 0 0 0 0;
@@ -21,4 +20,30 @@ nav > ul > li > a {
     font-size: 28px;
     color: white;
     text-decoration: none;
+}
+
+@media (max-width: 1280px) {
+    nav {
+        height: 8rem;
+    }
+
+    nav > ul > li > a {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        justify-content: center;
+        height: 6rem;
+    }
+
+    nav > ul > li {
+        display: flex;
+        align-items: center;
+    }
+
+    nav > ul > li > a {
+        font-size: 30px;
+    }
 }

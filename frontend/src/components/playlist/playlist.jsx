@@ -1,5 +1,5 @@
 import "./playlist.css";
-import CustomModal from "../modal/modal.jsx";
+import CustomModal from "../modals/endModal.jsx";
 
 function Playlist({setRouterState, playlistState, accessTokenState, setAccessTokenState, userIdState, setUserIdState, titleState, openModal, setOpenModal, setPlaylistState, setTitleState}) {
 

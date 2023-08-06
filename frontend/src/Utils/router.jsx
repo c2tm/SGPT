@@ -13,7 +13,7 @@ export const router = (routerState, setRouterState, setPlaylistState, playlistSt
         )
     } else {
         return (
-            <Home setRouterState={setRouterState} setPlaylistState={setPlaylistState} setTitleState={setTitleState}/>
+            <Home setRouterState={setRouterState} setPlaylistState={setPlaylistState} setTitleState={setTitleState} openModal={openModal} setOpenModal={setOpenModal} />
         )
     }
 }

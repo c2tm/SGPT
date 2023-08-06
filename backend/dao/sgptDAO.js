@@ -32,6 +32,8 @@ export default class SgptDAO {
                 messages: [{"role": "user", "content": message}],
               });
 
+              console.log(JSON.parse(chatCompletion.data.choices[0].message.content));
+
             const playlistDoc = {
                 id: id,
                 user: username,
@@ -42,6 +44,10 @@ export default class SgptDAO {
             return chatCompletion.data.choices[0].message.content;
             
         } catch (e) {
+            if (e instanceof SyntaxError) {
+                console.error("This is a syntax error:", e.message);
+                return { error: "Syntax Error! ChatGPT Didn't like the prompt!", code: "syntax" };
+              }
             console.error(`Unable to post playlist: ${e}`);
             return { error: e };
         }

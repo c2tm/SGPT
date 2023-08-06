@@ -1,8 +1,10 @@
 import "./home.css";
 import LoadingDots from '../graphics/loadingdots.jsx';
 import { useEffect } from "react";
+import { isJsonString } from "../../Utils/functions";
+import HomeModal from "../modals/homeModal";
 
-function Home({setRouterState, setPlaylistState, setTitleState}) {
+function Home({setRouterState, setPlaylistState, setTitleState, openModal, setOpenModal}) {
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -27,10 +29,16 @@ function Home({setRouterState, setPlaylistState, setTitleState}) {
                 throw new Error('Response was not ok!')
             } else {
                 const data = await response.json();
-                const dataDecoded = JSON.parse(data);
-                setTitleState(input);
-                setPlaylistState(dataDecoded);
-                setRouterState('playlist');
+                if(isJsonString(data)) {
+                    const dataDecoded = JSON.parse(data);
+                    setTitleState(input);
+                    setPlaylistState(dataDecoded);
+                    setRouterState('playlist');
+                } else {
+                    hideLoadingDots();
+                    clearInput();
+                    setOpenModal(true);
+                }
             }
         }
         fetchPlaylist();
@@ -39,6 +47,16 @@ function Home({setRouterState, setPlaylistState, setTitleState}) {
     function showLoadingDots() {
         const loadingDots = document.getElementById("loadingdots-container");
         loadingDots.style.visibility = "visible";
+    }
+
+    function hideLoadingDots() {
+        const loadingDots = document.getElementById("loadingdots-container");
+        loadingDots.style.visibility = "hidden";
+    }
+
+    function clearInput() {
+        const input = document.getElementById("prompt");
+        input.value = "";
     }
 
     const formHTML = (
@@ -50,8 +68,11 @@ function Home({setRouterState, setPlaylistState, setTitleState}) {
     )
 
     return (
-        <div className="homepage-container">
-            {formHTML}
+        <div>
+            <div className="homepage-container">
+                {formHTML}
+            </div>
+            {openModal && <HomeModal openModal={openModal} setOpenModal={setOpenModal}/>}
         </div>
     )
 }

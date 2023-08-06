@@ -22,3 +22,9 @@
 .body-container {
     height: 100%;
 }
+
+@media (max-width: 1280px) {
+    .custom-shape-divider-bottom-1691028032 svg {
+        height: 200px;
+    }
+}
