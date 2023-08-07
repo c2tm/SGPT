@@ -94,6 +94,19 @@ form > button {
     }
 }
 
+@media (max-width: 431px) {
+    form {
+        width: 23rem;
+        height: 4rem;
+        margin: 14rem 0 0 0;
+        padding: 0 2rem 0 2rem;
+    }
+
+    form > input {
+        font-size: 12px;
+    }
+}
+
 @media (max-width: 390px) {
     form {
         width: 20rem;
