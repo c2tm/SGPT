@@ -51,4 +51,9 @@ body {
   :root {
     overflow-y: hidden;
   }
+
+  body {
+    position: fixed;
+    overflow: hidden;
+  }
 }
