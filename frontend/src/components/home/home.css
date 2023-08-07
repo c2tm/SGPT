@@ -106,3 +106,18 @@ form > button {
         font-size: 12px;
     }
 }
+
+@media (max-width: 280px) {
+    form {
+        width: 15rem;
+        height: 3rem;
+        margin: 7rem 0 0 0;
+        padding: 0 2rem 0 2rem;
+    }
+
+    form > input {
+        font-size: 8px;
+        margin: 10px 0 0 0;
+        height: 1rem;
+    }
+}

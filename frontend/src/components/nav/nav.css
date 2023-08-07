@@ -47,3 +47,14 @@ nav > ul > li > a {
         font-size: 30px;
     }
 }
+
+@media (max-width: 280px) {
+    nav {
+        justify-content: center;
+        height: 4rem;
+    }
+
+    nav > ul > li > a {
+        font-size: 25px;
+    }
+}

@@ -140,3 +140,25 @@
     font-size: 15px;
   }
 }
+
+@media (max-width: 280px) {
+  .playlist-container {
+    height: 22rem;
+    padding: 10px;  
+  }
+
+  .playlist {
+    padding: 2px;
+    width: 80%;
+    border-radius: 7px;
+    margin: 8px 0 8px 0;
+  }
+
+  .spotify-button {
+    font-size: 12px;
+  }
+
+  .song {
+    font-size: 7px;
+  }
+}
