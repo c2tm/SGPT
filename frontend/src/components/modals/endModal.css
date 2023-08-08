@@ -18,9 +18,8 @@
 
 .button-container {
     display: flex;
-    width: 8rem;
-    justify-content: space-between;
-    -webkit-justify-content: space-between;
+    width: 100%;
+    justify-content: center;
 }
 
 .modal-content > div > div > button {

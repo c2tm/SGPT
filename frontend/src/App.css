@@ -42,8 +42,8 @@ body {
 }
 
 @media (max-width: 1280px) {
-  .custom-shape-divider-bottom-1691028032 svg {
-      height: 200px;
+  .custom-shape-divider-bottom-1691028032 {
+    display: none;
   }
 }
 
@@ -56,8 +56,4 @@ body {
     position: fixed;
     overflow: hidden;
   }
-
-  .custom-shape-divider-bottom-1691028032 svg {
-    height: 300px;
-}
 }

@@ -26,7 +26,7 @@ function CustomModal({openModal, setOpenModal, setPlaylistState, setTitleState, 
                     Your playlist has been created! Check your Spotify Account!
                     </p>
                     <div className="button-container">
-                        <button onClick={() => handleResetApp()}>Home</button>
+                        <button onClick={() => handleResetApp()} style={{marginRight: 1 + 'rem'}}>Home</button>
                         <button onClick={() => setOpenModal(false)}>Close</button>
                     </div>
                 </div>

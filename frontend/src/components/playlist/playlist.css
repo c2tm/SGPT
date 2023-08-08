@@ -59,22 +59,22 @@
 
   @media (max-width: 1280px) {
     .playlist-container {
-      height: 100%;
+      height: 40rem;
     }
 
     .playlist {
       padding: 2px;
       width: 60%;
       border-radius: 7px;
-      margin: 13rem 0 1rem 0;
+      margin: 1rem 0 1rem 0;
     }
 
     .spotify-button {
-      font-size: 36px;
+      font-size: 23px;
     }
 
     .song {
-      font-size: 35px;
+      font-size: 13px;
     }
 }
 
