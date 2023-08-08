@@ -183,3 +183,21 @@
     font-size: 7px;
   }
 }
+
+@media (max-height: 900px) {
+  .playlist-container {
+    height: 31rem;
+  }
+}
+
+@media (max-height: 761px) {
+  .playlist-container {
+    height: 25rem;
+  }
+}
+
+@media (max-height: 664px) {
+  .playlist-container {
+    height: 20rem;
+  }
+}
