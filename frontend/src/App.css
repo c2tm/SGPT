@@ -47,7 +47,7 @@ body {
   }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 431px) {
   :root {
     overflow-y: hidden;
   }
@@ -56,4 +56,8 @@ body {
     position: fixed;
     overflow: hidden;
   }
+
+  .custom-shape-divider-bottom-1691028032 svg {
+    height: 300px;
+}
 }
