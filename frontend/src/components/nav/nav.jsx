@@ -22,6 +22,7 @@ function Nav({routerState, setRouterState, setOpenModal, setPlaylistState, setTi
         <nav>
             <ul>
                 <li><a href="#" onClick={() => handleLink("home")}>SGPT</a></li>
+                <li><a href="#" onClick={() => handleLink("login")}>LOG IN</a></li>
             </ul>
         </nav>
     )

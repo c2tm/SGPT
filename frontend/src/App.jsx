@@ -13,6 +13,8 @@ function App() {
   const [userIdState, setUserIdState] = useState('');
   const [titleState, setTitleState] = useState('');
   const [openModal, setOpenModal] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
     if(localStorage.getItem("playlistState")) {

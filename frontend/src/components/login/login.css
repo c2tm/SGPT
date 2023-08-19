@@ -1,0 +1,48 @@
+.login-container {
+    display: flex;
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+}
+
+.login-container > form {
+    height: max-content;
+    padding: 0 3rem 1.5rem 3rem;
+    margin: calc(100vh / 4.5) 0 0 0;;
+    
+}
+
+.login-container > form > input {
+    margin: 0 0 0 0;
+}
+
+.login-container > form > input::placeholder {
+    opacity: 75%;
+}
+
+.login-container > form > input:not(first-child) {
+    margin: 2rem 0 0 0;
+}
+
+.login-container > form > div {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 0 0;
+}
+
+.login-container > form > div > button {
+    border: 2px solid rgba(87,204,153,1);
+    color: white;
+    background-color: rgb(37, 36, 36);;
+    border-radius: 3px;
+    transition: all .2s ease-out;
+}
+
+.login-container > form > div > button:hover {
+    background: linear-gradient(153deg, rgba(34,87,122,1) 0%, rgba(56,163,165,1) 44%, rgba(87,204,153,1) 100%);
+    transition: all .2s ease-in;
+}
+
+.login-container > form > div > button:nth-child(2) {
+    margin: 0 0 0 1rem;
+}

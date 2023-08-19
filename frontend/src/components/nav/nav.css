@@ -1,18 +1,28 @@
 nav {
     display: flex;
-    width: 100vw;
-    height: 6rem;
+    width: 100%;
+    height: 3rem;
     padding: 0 0 0 0;
+    transition: all .2s ease-out;
 }
 
 nav > ul {
     display: flex;
-    margin: 0 0 0 4rem;
-    padding: 0 0 0 0;
+    justify-content: space-between;
+    padding: 0 4rem 0 4rem;
+    width: 100vw;
+}
+
+nav:hover {
+    transition: all .2s ease-in;
+    background-color: #2E2C2C;
+}
+
+nav > ul > li > a:hover {
+    color: rgba(56,163,165,1);
 }
 
 nav > ul > li {
-    margin: 0 4rem 0 0;
     list-style: none;
 }
 
