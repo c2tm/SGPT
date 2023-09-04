@@ -9,7 +9,7 @@ dotenv.config();
 const mongo_username = process.env.MONGO_USERNAME;
 const mongo_password = process.env.MONGO_PASSWORD;
 const uri = `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.admcewa.mongodb.net/?retryWrites=true&w=majority`;
-const port = 8000;
+const port = process.env.PORT;
 
 // Saving - Connects to MongoDB server without mongoose
 // const MongoClient = mongodb.MongoClient;

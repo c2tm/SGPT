@@ -1,14 +1,11 @@
 import mongoose from "mongoose";
+import passportLocalMogoose from "passport-local-mongoose";
 
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
         unique: true
-    },
-    password: {
-        type: String,
-        required: true
     },
     subscribed: {
         type: Number,
@@ -19,5 +16,11 @@ const userSchema = new mongoose.Schema({
         default: null,
     }
 })
+
+const options = {
+    usernameField: "email",
+}
+
+userSchema.plugin(passportLocalMogoose, options);
 
 export default mongoose.model('User', userSchema);

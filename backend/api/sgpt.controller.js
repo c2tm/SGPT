@@ -4,15 +4,19 @@ import querystring from 'querystring'
 import axios from "axios";
 import User from './models/user.js';
 import bcrypt from 'bcryptjs';
-
-const salt = bcrypt.genSaltSync(10);
+import passport from "passport";
 
 export default class SgptController {
 
     static async apiGetUsers(req, res, next) {
         try {
-            const users = await User.find();
-            res.json(users);
+            const auth = req.isAuthenticated();
+            if(auth) {
+                const users = await User.find();
+                res.json(users);
+            } else {
+                res.status(401).json({ message: "Not Authenticated!" });
+            }
         } catch (e) {
             res.status(500).json({ error: e.message });
         }
@@ -27,14 +31,50 @@ export default class SgptController {
     }
 
     static async apiCreateUser(req, res, next) {
-        const hash = bcrypt.hashSync(req.body.password, salt);
-        const user = new User({
-            email: req.body.email,
-            password: hash,
-        })
         try {
-            const newUser = await user.save();
-            res.status(201).json(newUser);
+            User.register({email: req.body.username}, req.body.password, (err, user) => {
+                if (err) {
+                    res.json({ success: false, message: "Your account could not be saved. Error: " + err });
+                } else {
+                    req.login(user, (err) => {
+                        if (err) {
+                            res.json({ success: false, message: err });
+                        }
+                        else {
+                            res.json({ success: true, message: "Your account has been saved"});
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            res.status(400).json({ error: e.message });
+        }
+    }
+
+    static async apiLogInUser(req, res, next) {
+        try {
+            const user = new User({
+                email: req.body.email,
+                password: req.body.password
+            });
+            req.login(user, (err) => {
+                if(err) {
+                    console.log(err);
+                } else {
+                    passport.authenticate("local")(req, res, () => {
+                        res.status(200).json(user);
+                    })
+                }
+            })
+        } catch (e) {
+            res.status(400).json({ error: e.message });
+        }
+    }
+
+    static async apiLogOutUser(req, res, next) {
+        try {
+            req.logout();
+            res.json({ message: "logged out successfully" });
         } catch (e) {
             res.status(400).json({ error: e.message });
         }
